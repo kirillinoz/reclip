@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h3 {
+        @apply mt-6 py-2 font-bold border-b border-black;
+    }
+}
+
+@layer components {
+    .button {
+        @apply bg-gray-200 px-8 py-4 rounded-sm font-bold;
+    }
+
+    .button.highlight {
+        @apply bg-indigo-500 text-white;
+    }
+}
