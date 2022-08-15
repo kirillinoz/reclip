@@ -33,6 +33,8 @@ function Export({
             widthVideo
         )
 
+        console.log(calcNewWidth(heightVideo), heightVideo, correctedPosition)
+
         const output = await cropVideo(
             calcNewWidth(heightVideo),
             heightVideo,

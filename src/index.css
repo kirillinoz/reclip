@@ -16,4 +16,91 @@
     .button.highlight {
         @apply bg-indigo-500 text-white;
     }
+
+    .seekbar {
+        @apply flex justify-between items-center;
+    }
+
+    .seekbar > input {
+        position: absolute;
+    }
+
+    .seekbar > progress {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        height: 5px;
+    }
+
+    .seekbar > progress::-webkit-progress-value {
+        @apply bg-indigo-500;
+    }
+
+    .seekbar > progress::-moz-progress-bar {
+        @apply bg-indigo-500;
+    }
+
+    .seekbar > input[type='range'] {
+        -webkit-appearance: none;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -moz-apperance: none !important;
+        height: 5px;
+        background: none;
+        outline: none !important;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .seekbar > input[type='range']:focus {
+        outline: none;
+        border: none;
+    }
+
+    .seekbar > input[type='range']::-moz-range-track {
+        border: none;
+        background: transparent;
+        outline: none;
+    }
+
+    .seekbar > input[type='range']::-ms-track {
+        border: inherit;
+        color: transparent; /* don't drawn vertical reference line */
+        background: transparent;
+    }
+
+    .seekbar > input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    .seekbar > input[type='range']::-moz-range-thumb {
+        -moz-appearance: none;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+    }
+
+    .seekbar > input[type='range']::-ms-thumb {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 0;
+        background: transparent;
+    }
+
+    .seekbar > input[type='range']::-ms-fill-lower,
+    .seekbar > input[type='range']::-ms-fill-upper {
+        background: transparent;
+    }
+
+    .seekbar > input[type='range']::-ms-tooltip {
+        display: none;
+    }
 }
