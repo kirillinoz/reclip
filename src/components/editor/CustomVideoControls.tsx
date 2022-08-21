@@ -1,24 +1,27 @@
+// ----- Packages -----
 import { FormEvent } from 'react'
+
+type CustomVideoControlsProps = {
+    isPlaying: boolean
+    currentTime: number
+    duration: number
+    handlePause: () => void
+    handlePlay: () => void
+    handleTimeChange: (e: FormEvent<HTMLInputElement>) => void
+    isMuted: boolean
+    setIsMuted: (boolean: boolean) => void
+}
 
 function CustomVideoControls({
     isPlaying,
-    handlePause,
-    handlePlay,
     currentTime,
     duration,
+    handlePause,
+    handlePlay,
     handleTimeChange,
     isMuted,
     setIsMuted
-}: {
-    isPlaying: boolean
-    handlePause: () => void
-    handlePlay: () => void
-    currentTime: number
-    duration: number
-    handleTimeChange: (e: FormEvent<HTMLInputElement>) => void
-    isMuted: boolean
-    setIsMuted: (isMuted: boolean) => void
-}) {
+}: CustomVideoControlsProps) {
     return (
         <div className="flex pt-5 pb-3 bg-gray-200 px-2 rounded-sm">
             <div className=" w-1/12 h-auto mr-2 flex justify-center items-center">

@@ -1,7 +1,9 @@
+// ----- Packages -----
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 
-import { cropVideo } from '../assets/scripts/editing'
-import { calcNewWidth, scale } from '../assets/scripts/utils'
+// ----- Scripts -----
+import { cropVideo } from '../../assets/scripts/editing'
+import { calcNewWidth, scale } from '../../assets/scripts/utils'
 
 type ExportProps = {
     heightVideo: number
@@ -11,6 +13,7 @@ type ExportProps = {
     clientWidthVideo: number
     widthVideo: number
     draggable: React.RefObject<HTMLDivElement>
+    container: React.RefObject<HTMLDivElement>
 }
 
 function Export({
@@ -20,20 +23,28 @@ function Export({
     inputVideo,
     clientWidthVideo,
     widthVideo,
-    draggable
+    draggable,
+    container
 }: ExportProps) {
     const handleDownload = async () => {
-        if (!draggable.current) return
+        if (!draggable.current || !container.current) return
+
+        console.log(
+            draggable.current.getBoundingClientRect().x -
+                container.current.getBoundingClientRect().x,
+            clientWidthVideo,
+            widthVideo
+        )
 
         const correctedPosition = scale(
-            draggable.current.getBoundingClientRect().x - 12,
+            draggable.current.getBoundingClientRect().x -
+                container.current.getBoundingClientRect().x +
+                8,
             0,
             clientWidthVideo,
             0,
             widthVideo
         )
-
-        console.log(calcNewWidth(heightVideo), heightVideo, correctedPosition)
 
         const output = await cropVideo(
             calcNewWidth(heightVideo),
@@ -60,10 +71,12 @@ function Export({
         <div>
             <h3>Publish</h3>
             <div className="flex flex-col">
-                <button className="button mt-3" onClick={handleDownload}>
+                <button
+                    className="button highlight mt-3"
+                    onClick={handleDownload}
+                >
                     Download
                 </button>
-                <button className="button highlight mt-3">TikTok</button>
             </div>
         </div>
     )

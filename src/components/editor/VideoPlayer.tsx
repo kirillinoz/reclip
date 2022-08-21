@@ -1,9 +1,26 @@
-// Packages
+// ----- Packages -----
 import { FormEvent, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import ReactPlayer from 'react-player'
-import { calcNewWidth } from '../assets/scripts/utils'
+
+// ----- Components -----
 import CustomVideoControls from './CustomVideoControls'
+
+// ----- Scripts -----
+import { calcNewWidth } from '../../assets/scripts/utils'
+
+type VideoPlayerProps = {
+    url: string
+    clientWidthVideo: number
+    clientHeightVideo: number
+    position: { x: number; y: number } | undefined
+    draggable: React.RefObject<HTMLDivElement>
+    container: React.RefObject<HTMLDivElement>
+    setWidthVideo: (width: number) => void
+    setHeightVideo: (height: number) => void
+    setClientWidthVideo: (width: number) => void
+    setClientHeightVideo: (height: number) => void
+}
 
 function VideoPlayer({
     url,
@@ -11,26 +28,19 @@ function VideoPlayer({
     clientHeightVideo,
     position,
     draggable,
+    container,
     setWidthVideo,
     setHeightVideo,
     setClientWidthVideo,
     setClientHeightVideo
-}: {
-    url: string
-    clientWidthVideo: number
-    clientHeightVideo: number
-    position: { x: number; y: number } | undefined
-    draggable: React.RefObject<HTMLDivElement>
-    setWidthVideo: (width: number) => void
-    setHeightVideo: (height: number) => void
-    setClientWidthVideo: (width: number) => void
-    setClientHeightVideo: (height: number) => void
-}) {
+}: VideoPlayerProps) {
+    // States
     const [isPlaying, setIsPlaying] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [isMuted, setIsMuted] = useState(true)
 
+    // Refs
     const hostVideo = useRef<ReactPlayer>(null)
 
     const handleOnProgress = (e: { playedSeconds: number }) => {
@@ -59,7 +69,10 @@ function VideoPlayer({
         <div>
             <div className="relative">
                 {clientWidthVideo > 0 && (
-                    <div className="absolute w-full h-full z-10">
+                    <div
+                        ref={container}
+                        className="absolute w-full h-full z-10"
+                    >
                         <Draggable
                             axis="x"
                             position={position}

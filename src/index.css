@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply font-inter;
+    }
     h3 {
         @apply mt-6 py-2 font-bold border-b border-black;
     }
@@ -10,7 +13,7 @@
 
 @layer components {
     .button {
-        @apply bg-gray-200 px-8 py-4 rounded-sm font-bold;
+        @apply bg-gray-200 px-8 py-4 rounded-lg font-bold;
     }
 
     .button.highlight {

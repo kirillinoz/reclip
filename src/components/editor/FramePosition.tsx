@@ -1,4 +1,5 @@
-import { calcNewWidth } from '../assets/scripts/utils'
+// ----- Scripts -----
+import { calcNewWidth } from '../../assets/scripts/utils'
 
 type FramePositionProps = {
     clientWidthVideo: number
