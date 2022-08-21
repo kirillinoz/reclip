@@ -5,10 +5,6 @@ import { NavLink } from 'react-router-dom'
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    const activeStyle = {
-        textDecoration: 'underline'
-    }
-
     return (
         <header className="relative bg-white">
             <div className="px-3 py-6 sm:p-6">
