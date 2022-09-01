@@ -1,9 +1,11 @@
 // ----- Packages -----
 import { FFmpeg } from '@ffmpeg/ffmpeg'
+import { useState } from 'react'
 
 // ----- Scripts -----
 import { cropVideo } from '../../assets/scripts/editing'
 import { calcNewWidth, scale } from '../../assets/scripts/utils'
+import LoadingSpinner from './LoadingSpinner'
 
 type ExportProps = {
     heightVideo: number
@@ -26,15 +28,12 @@ function Export({
     draggable,
     container
 }: ExportProps) {
+    const [loading, setLoading] = useState(false)
+
     const handleDownload = async () => {
         if (!draggable.current || !container.current) return
 
-        console.log(
-            draggable.current.getBoundingClientRect().x -
-                container.current.getBoundingClientRect().x,
-            clientWidthVideo,
-            widthVideo
-        )
+        setLoading(true)
 
         const correctedPosition = scale(
             draggable.current.getBoundingClientRect().x -
@@ -56,6 +55,8 @@ function Export({
             inputVideo
         )
 
+        setLoading(false)
+
         const a = Object.assign(document.createElement('a'), {
             href: output,
             style: 'display: none',
@@ -75,7 +76,16 @@ function Export({
                     className="button highlight mt-3"
                     onClick={handleDownload}
                 >
-                    Download
+                    {loading ? (
+                        <div className="flex justify-center items-center">
+                            <div className="ml-2 w-5 h-5">
+                                <LoadingSpinner color="#FFFFFF" />
+                            </div>
+                            Loading
+                        </div>
+                    ) : (
+                        'Download'
+                    )}
                 </button>
             </div>
         </div>

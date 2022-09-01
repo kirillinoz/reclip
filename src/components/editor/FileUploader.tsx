@@ -16,8 +16,12 @@ function FileUploader({ inputVideo, setInputVideo }: FileUploaderProps) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const fileUploaded = event.target.files?.[0]
         if (fileUploaded !== undefined) {
-            setInputVideo(fileUploaded)
-            setFileName(fileUploaded.name)
+            if (fileUploaded.size <= 52_428_800) {
+                setInputVideo(fileUploaded)
+                setFileName(fileUploaded.name)
+            } else {
+                alert('File size is too big!')
+            }
         }
     }
 
@@ -31,7 +35,9 @@ function FileUploader({ inputVideo, setInputVideo }: FileUploaderProps) {
                     >
                         Change
                     </button>
-                    <p className="font-bold text-sm">{fileName}</p>
+                    <p className="font-bold text-sm overflow-hidden">
+                        {fileName}
+                    </p>
                 </div>
             ) : (
                 <div className="flex flex-col">
@@ -46,6 +52,10 @@ function FileUploader({ inputVideo, setInputVideo }: FileUploaderProps) {
                     >
                         Choose video
                     </button>
+                    <p className="mt-2 text-center text-xs text-gray-600">
+                        Supported format <span className="font-bold">MP4</span>{' '}
+                        | Max file size <span className="font-bold">50MB</span>
+                    </p>
                 </div>
             )}
 
@@ -54,6 +64,7 @@ function FileUploader({ inputVideo, setInputVideo }: FileUploaderProps) {
                 className="hidden"
                 ref={hiddenFileInput}
                 onChange={handleChange}
+                accept=".mp4"
             ></input>
         </div>
     )

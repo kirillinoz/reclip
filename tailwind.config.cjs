@@ -11,6 +11,10 @@ module.exports = {
                 poppins: ['Poppins', 'sans-serif'],
                 inter: ['Inter', 'sans-serif'],
                 pacifico: ['Pacifico', 'sans-serif']
+            },
+            fontSize: {
+                xxxs: '.4rem',
+                xxs: '.5rem'
             }
         }
     },

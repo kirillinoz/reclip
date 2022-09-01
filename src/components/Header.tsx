@@ -6,7 +6,7 @@ function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <header className="relative bg-white">
+        <header className="relative bg-white border-b-2">
             <div className="px-3 py-6 sm:p-6">
                 <div className="flex justify-between items-center">
                     <div className="flex">
