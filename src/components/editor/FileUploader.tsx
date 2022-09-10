@@ -7,7 +7,7 @@ type FileUploaderProps = {
 
 function FileUploader({ inputVideo, setInputVideo }: FileUploaderProps) {
     const hiddenFileInput = useRef<HTMLInputElement>(null)
-    const [fileName, setFileName] = useState('')
+    const [fileName, setFileName] = useState<string>('')
 
     const handleClick = () => {
         hiddenFileInput?.current?.click()
