@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { initialize, pageview } from 'react-ga'
+import ReactGA from 'react-ga'
 
 import Home from './views/Home'
 import Editor from './views/Editor'
@@ -9,13 +9,13 @@ import Footer from './components/Footer'
 
 // Google Analytics
 const MEASUREMENT_ID = 'G-2SC4HXDQNM'
-initialize(MEASUREMENT_ID)
+ReactGA.initialize(MEASUREMENT_ID)
 
 function App() {
     const [ready, setReady] = useState<boolean>(false)
 
     useEffect(() => {
-        pageview(window.location.pathname + window.location.search)
+        ReactGA.pageview(window.location.pathname + window.location.search)
     }, [])
 
     return (
