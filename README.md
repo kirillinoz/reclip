@@ -2,7 +2,7 @@
 [Demo](https://reclip.vercel.app) | [Code](https://github.com/kirillinoz/reclip)
 
 ## Overview
-Reclip is a web application that allows you to edit videos into 9:16 format for short type content (YouTube Shorts, TikTok and Instagram Reels). You can easily slide the frame into the position where you want video to be cropped. You can use the playback to see if the part of the video you want to crop will be inside the frame.
+Reclip is a web application that allows you to edit videos into 9:16 format for short format content (YouTube Shorts, TikTok, and Instagram Reels). You can easily slide the frame into the position where you want the video to be cropped. You can use the playback to see if the part of the video you want to crop will be inside the frame.
 
 ## Table of Contents
 * [Installation](#installation)
